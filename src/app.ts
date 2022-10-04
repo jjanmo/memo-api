@@ -17,9 +17,13 @@ class App {
   private setRouter() {
     this.app.use(todoRouter)
   }
-  private setMiddleware() {}
+  private setMiddleware() {
+    this.app.use(express.json())
+    this.app.use(express.urlencoded({ extended: true }))
+  }
 
   public listen() {
+    this.setMiddleware()
     this.setRouter()
 
     this.app.listen(this.port, () => {
