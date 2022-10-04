@@ -1,6 +1,4 @@
-import { Todo } from 'src/types/todo'
-
-export const todos: Todo[] = [
+export const todos = [
   {
     id: 1,
     contents: 'Learn React',
