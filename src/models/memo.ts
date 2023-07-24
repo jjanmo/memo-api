@@ -1,7 +1,8 @@
 export interface Memo {
   id: string
-  created: number
-  updated: number
+  created: string
+  updated: string
   title: string
   content: string
+  author: string
 }
