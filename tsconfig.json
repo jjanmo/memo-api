@@ -5,13 +5,14 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "moduleResolution": "node",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@controllers/*": ["src/controllers/*"],
-      "@models/*": ["src/models/*"]
+      "@models/*": ["src/models/*"],
+      "@routes/*": ["src/routes/*"]
     },
-    "esModuleInterop": true,
-    "isolatedModules": true,
+    "esModuleInterop": true, // 모든 가져오기에 대한 네임스페이스 객체 생성을 통해 CommonJS와 ES 모듈 간의 상호 운용성을 제공
+    "isolatedModules": true, // 각 파일을 별도 모듈로 변환, 파일에 export가 없는 경우 에러
     "resolveJsonModule": true,
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
