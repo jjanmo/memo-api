@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction, Application } from 'express'
 import * as dotenv from 'dotenv'
-import todoRouter from './controllers/todo.controller'
+import memoRouter from '@controllers/memos'
 
 dotenv.config()
 
@@ -11,11 +11,11 @@ class App {
   constructor() {
     const app = express()
     this.app = app
-    this.port = Number(process.env.PORT) || 9331
+    this.port = Number(process.env.PORT) || 1234
   }
 
   private setRouter() {
-    this.app.use(todoRouter)
+    this.app.use(memoRouter)
   }
   private setMiddleware() {
     this.app.use(express.json())
