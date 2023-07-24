@@ -1,6 +1,11 @@
-import { Router, Request, Response } from 'express'
+import { getMemos } from '@controllers/memo'
+import { Router } from 'express'
 
 const router = Router()
+
+router.get('/', getMemos)
+
+export default router
 
 // CRUD
 // C : 메모 생성
@@ -11,6 +16,7 @@ const router = Router()
 
 // router.get('/memos', (req: Request, res: Response) => {
 //   try {
+//     res.send('hello world welcome modu memos 🗒️')
 //   } catch (e) {
 //     console.log(e)
 //   }
@@ -73,5 +79,3 @@ const router = Router()
 //     console.log(e)
 //   }
 // })
-
-export default router

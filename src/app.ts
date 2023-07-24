@@ -1,6 +1,8 @@
-import express, { Request, Response, NextFunction, Application } from 'express'
+import express, { Application } from 'express'
 import * as dotenv from 'dotenv'
-import memoRouter from '@controllers/memos'
+import logger from 'morgan'
+import memoRouter from './routes/memo'
+// import './db'
 
 dotenv.config()
 
@@ -18,6 +20,7 @@ class App {
     this.app.use(memoRouter)
   }
   private setMiddleware() {
+    this.app.use(logger('dev'))
     this.app.use(express.json())
     this.app.use(express.urlencoded({ extended: true }))
   }
