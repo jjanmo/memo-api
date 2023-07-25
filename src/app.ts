@@ -17,7 +17,7 @@ class App {
   }
 
   private setRouter() {
-    this.app.use(memoRouter)
+    this.app.use('/memos', memoRouter)
   }
   private setMiddleware() {
     this.app.use(logger('dev'))

@@ -1,9 +1,13 @@
-import { getMemos } from '@controllers/memo'
+import { createMemo, deleteMemo, getMemo, getMemos, updateMemo } from '@controllers/memo'
 import { Router } from 'express'
 
 const router = Router()
 
 router.get('/', getMemos)
+router.get('/:id', getMemo)
+router.post('/', createMemo)
+router.delete('/:id', deleteMemo)
+router.put('/:id', updateMemo)
 
 export default router
 
