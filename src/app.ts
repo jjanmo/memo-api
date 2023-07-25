@@ -2,7 +2,8 @@ import express, { Application } from 'express'
 import * as dotenv from 'dotenv'
 import logger from 'morgan'
 import memoRouter from './routes/memo'
-// import './db'
+import sequelize from './db'
+import Memo from '@models/memo'
 
 dotenv.config()
 
@@ -25,12 +26,19 @@ class App {
     this.app.use(express.urlencoded({ extended: true }))
   }
 
+  private async connectDatabase() {
+    return await sequelize.sync({ force: true })
+  }
+
   public listen() {
     this.setMiddleware()
     this.setRouter()
+    this.connectDatabase().then(() => {
+      console.log('Database connection Succeeded 📂')
 
-    this.app.listen(this.port, () => {
-      console.log(`Server listening on http://localhost:${this.port}`)
+      this.app.listen(this.port, () => {
+        console.log(`Server listening on http://localhost:${this.port} 🚀`)
+      })
     })
   }
 }

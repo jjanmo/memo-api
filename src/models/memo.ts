@@ -6,3 +6,28 @@ export interface Memo {
   content: string
   author: string
 }
+
+import { DataTypes } from 'sequelize'
+import sequelize from '../db'
+
+const Memo = sequelize.define('Memo', {
+  id: {
+    type: DataTypes.INTEGER,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  title: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  content: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  author: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+})
+
+export default Memo

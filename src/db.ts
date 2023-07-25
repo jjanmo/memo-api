@@ -1,9 +1,13 @@
-import { Database } from 'sqlite3'
-import path from 'path'
+import { Sequelize } from 'sequelize'
+import { config } from 'dotenv'
 
-const dbFilePath = path.resolve(__dirname, '../data/dev.db')
-const db = new Database(':memory', (err) => {
-  if (err) return console.error(err)
+config()
 
-  console.log(`Successful connection to the database 🗂️`)
+const storage = process.env.NODE_ENV === 'production' ? 'data/prod.db' : 'data/dev.db'
+
+const sequelize = new Sequelize({
+  dialect: 'sqlite',
+  storage,
 })
+
+export default sequelize
